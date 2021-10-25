@@ -24,7 +24,7 @@ namespace Pomogite_x2.StructurCompany
         //вывод информации
         public new string ToString()
         {
-            return $"Имя департамента: {NameDepartament} количество сотрудников: {Quantity} вложенность департамента: {IdGetDep}";
+            return $"Имя департамента: {NameDepartament} количество сотрудников: {Quantity} айди департамента:{ID} вложенность департамента: {IdGetDep}";
         }
     }
 }
