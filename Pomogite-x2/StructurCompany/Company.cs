@@ -14,7 +14,7 @@ namespace Pomogite_x2.StructurCompany
         // названия кмпании
         public string NameCompany { get; set; }
         //коллекция департаментов
-        public List<Departament> Departaments { get; set; }
+        public List<Departament> Departaments = new List<Departament>();
         //коллекция студентов
         public List<Student> Students = new List<Student>();
         //коллекция работников
@@ -68,26 +68,22 @@ namespace Pomogite_x2.StructurCompany
             public void PrintNew()
             {
                 List<Company> companyNew = new List<Company>();
-                List<Departament> departaments = new List<Departament>();
-                List<Student> sTud = new List<Student>();
-                List<Worker> work = new List<Worker>();
                 // создание новой компании с информацией с файла 
                 foreach (var item in company)// вывод компании
                 {
                 foreach (var wor in item.Workers)
                 {
-                    
-                    work.Add(new Worker(wor.Name, wor.LastName, wor.Age, wor.Salary, wor.IdDepart, wor.IdGetDep));
+                    Workers.Add(new Worker(wor.Name, wor.LastName, wor.Age, wor.Salary, wor.IdDepart, wor.IdGetDep));
                 }
                 foreach (var stud in item.Students)
                 {
-                    sTud.Add(new Student(stud.Name, stud.LastName, stud.Age, stud.Salary, stud.IdDepart, stud.IdGetDep));
+                    Students.Add(new Student(stud.Name, stud.LastName, stud.Age, stud.Salary, stud.IdDepart, stud.IdGetDep));
                 }
                 foreach (var dep in item.Departaments)
                 {
-                    departaments.Add(new Departament(dep.NameDepartament, dep.Quantity, dep.ID, dep.IdGetDep));// запись департаментов
+                    Departaments.Add(new Departament(dep.NameDepartament, dep.Quantity, dep.ID, dep.IdGetDep));// запись департаментов
                 }
-                    companyNew.Add(new Company(item.NameCompany, departaments, work, sTud));// запись компании
+                    companyNew.Add(new Company(item.NameCompany, Departaments, Workers, Students));// запись компании
                 } //вывод информации с файла
             Console.WriteLine();
             Console.WriteLine("измененная компания");

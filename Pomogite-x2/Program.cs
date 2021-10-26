@@ -7,7 +7,7 @@ namespace Pomogite_x2
     {
         static void Main(string[] args)
         {
-            string path = @"Company.xml";
+            string path = @".\Company.xml";
             Company company = new Company(path);
             //вывод компании с файла
             company.PrintOld();
