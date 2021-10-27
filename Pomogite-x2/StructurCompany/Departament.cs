@@ -25,26 +25,4 @@ namespace Pomogite_x2.StructurCompany
             return $"Имя департамента: {NameDepartament} количество сотрудников: {Quantity} айди департамента:{ID}";
         }
     }
-    //public void PrintOld()
-    //{
-    //    foreach (var item in company)
-    //    {
-    //        Console.WriteLine(item.ToString());
-    //        foreach (var dep in item.Departaments)
-    //        {
-    //            Console.WriteLine(dep.ToString());
-
-    //            foreach (var wor in item.Workers)
-    //            {
-    //                if (dep.ID == wor.IdDepart)
-    //                    Console.WriteLine(wor.ToString());
-    //            }
-    //            foreach (var stud in item.Students)
-    //            {
-    //                if (dep.ID == stud.IdDepart)
-    //                    Console.WriteLine(stud.ToString());
-    //            }
-    //        }
-    //    }
-    //}
 }

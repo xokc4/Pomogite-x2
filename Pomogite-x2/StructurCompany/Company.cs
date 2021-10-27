@@ -19,7 +19,6 @@ namespace Pomogite_x2.StructurCompany
         public List<Student> Students = new List<Student>();
         //коллекция работников
         public List<Worker> Workers = new List<Worker>();
-        //коллекция новой компании с изменеии зарплаты
         //конструктор создания компании
         public Company()
         {
@@ -54,7 +53,7 @@ namespace Pomogite_x2.StructurCompany
                     departaments.Add(new Departament(dep.NameDepartament, dep.Quantity, dep.ID));// запись департаментов
                 }
                 Company companyNew = new Company(company.NameCompany, departaments, workers, students);// запись компании
-                                                                                                       //вывод информации с файла
+                                                                                                       
                                                                                                        //вывод новой компании
                 Console.WriteLine(companyNew.NameCompany);
                 foreach (var dep in companyNew.Departaments)
