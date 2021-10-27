@@ -12,14 +12,13 @@ namespace Pomogite_x2.PeoplePost
         {
 
         }
-        public Student(string name, string lastName, int age, int salary, int idDepart, int idGetDep) : base(name, lastName, age, salary, idDepart, idGetDep)
+        public Student(string name, string lastName, int age, int salary, int idDepart) : base(name, lastName, age, salary, idDepart)
         {
             this.Name = name;
             this.LastName = lastName;
             this.Age = age;
             this.Salary = SalaryWorks();
             this.IdDepart = idDepart;
-            this.IdGetDep = idGetDep;
         }
 
         //наследуемый коструктор для студента 
@@ -27,7 +26,7 @@ namespace Pomogite_x2.PeoplePost
         //наследуемый вывод
         public new string ToString()
         {
-            return $"имя студента: {Name} Фамилия: {LastName} Возраст: {Age} зарплата: {Salary} айди: {IdDepart} айдиДеп: {IdGetDep}";
+            return $"имя студента: {Name} Фамилия: {LastName} Возраст: {Age} зарплата: {Salary} айди: {IdDepart}";
         }
    }
 }

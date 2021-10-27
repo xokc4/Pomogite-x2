@@ -18,21 +18,19 @@ namespace Pomogite_x2.PeoplePost
         public int Salary { get; set; }
         //айди департамента
         public int IdDepart { get; set; }
-        public int IdGetDep { get; set; }
 
         public People()
         {
 
         }
         //конструктор работника
-        public People(string name, string lastName, int age, int salary, int idDepart, int idGetDep)
+        public People(string name, string lastName, int age, int salary, int idDepart)
         {
             this.Name = name;
             this.LastName = lastName;
             this.Age = age;
             this.Salary = SalaryWorks();
             this.IdDepart = idDepart;
-            this.IdDepart = idGetDep;
         }
 
         // зарплата студентов
@@ -68,7 +66,7 @@ namespace Pomogite_x2.PeoplePost
         //вывод информации
         public override string ToString()
         {
-            return $"имя работника: {Name} Фамилия: {LastName} Возраст: {Age} зарплата: {Salary} айди: {IdDepart} айдиДеп: {IdGetDep}";
+            return $"имя работника: {Name} Фамилия: {LastName} Возраст: {Age} зарплата: {Salary} айди: {IdDepart}";
         }
     }
 }

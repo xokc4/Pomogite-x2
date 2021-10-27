@@ -14,17 +14,37 @@ namespace Pomogite_x2.StructurCompany
         public int Quantity { get; set; }
         // айди департамента
         public int ID { get; set; }
-        // вложенность департамента
-        public int IdGetDep { get; set; }
         //конструктор департамента
-        public Departament(string nameDepartament, int quantity, int id, int idGetDep) => (NameDepartament, Quantity, ID, IdGetDep) = (nameDepartament, quantity, id, idGetDep);
+        public Departament(string nameDepartament, int quantity, int id) => (NameDepartament, Quantity, ID) = (nameDepartament, quantity, id);
         public Departament()
         { 
         }
         //вывод информации
         public new string ToString()
         {
-            return $"Имя департамента: {NameDepartament} количество сотрудников: {Quantity} айди департамента:{ID} вложенность департамента: {IdGetDep}";
+            return $"Имя департамента: {NameDepartament} количество сотрудников: {Quantity} айди департамента:{ID}";
         }
     }
+    //public void PrintOld()
+    //{
+    //    foreach (var item in company)
+    //    {
+    //        Console.WriteLine(item.ToString());
+    //        foreach (var dep in item.Departaments)
+    //        {
+    //            Console.WriteLine(dep.ToString());
+
+    //            foreach (var wor in item.Workers)
+    //            {
+    //                if (dep.ID == wor.IdDepart)
+    //                    Console.WriteLine(wor.ToString());
+    //            }
+    //            foreach (var stud in item.Students)
+    //            {
+    //                if (dep.ID == stud.IdDepart)
+    //                    Console.WriteLine(stud.ToString());
+    //            }
+    //        }
+    //    }
+    //}
 }

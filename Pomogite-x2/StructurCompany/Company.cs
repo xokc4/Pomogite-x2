@@ -20,7 +20,6 @@ namespace Pomogite_x2.StructurCompany
         //коллекция работников
         public List<Worker> Workers = new List<Worker>();
         //коллекция новой компании с изменеии зарплаты
-        public List<Company> company = new List<Company>();
         //конструктор создания компании
         public Company()
         {
@@ -33,97 +32,62 @@ namespace Pomogite_x2.StructurCompany
             this.Workers = workers;
             this.Students = students;
         }
-        public Company(string path)
-        {
-            company = DeserializeXml(path);
-        }
-        /// <summary>
-        /// вывод компании с файла
-        /// </summary>
-        public void PrintOld()
-        {
-            foreach(var item in company)
-            {
-                Console.WriteLine(item.ToString());
-                foreach (var dep in item.Departaments)
-                {
-                    Console.WriteLine(dep.ToString());
-
-                    foreach (var wor in item.Workers)
-                    {
-                        if(dep.ID ==wor.IdDepart)
-                            Console.WriteLine(wor.ToString());
-                    }
-                    foreach (var stud in item.Students)
-                    {
-                        if(dep.ID == stud.IdDepart)
-                        Console.WriteLine(stud.ToString());
-                    }
-                }
-            }
-        }
         /// <summary>
         /// вывод измененной компании
         /// </summary>
-            public void PrintNew()
+            public void PrintNew(Company company)
             {
-                List<Company> companyNew = new List<Company>();
-                // создание новой компании с информацией с файла 
-                foreach (var item in company)// вывод компании
+            // создание новой компании с информацией с файла 
+            List<Worker> workers = new List<Worker>();
+            List<Student> students = new List<Student>();
+            List<Departament> departaments = new List<Departament>();
+                foreach (var wor in company.Workers)
                 {
-                foreach (var wor in item.Workers)
-                {
-                    Workers.Add(new Worker(wor.Name, wor.LastName, wor.Age, wor.Salary, wor.IdDepart, wor.IdGetDep));
+                    workers.Add(new Worker(wor.Name, wor.LastName, wor.Age, wor.Salary, wor.IdDepart));
                 }
-                foreach (var stud in item.Students)
+                foreach (var stud in company.Students)
                 {
-                    Students.Add(new Student(stud.Name, stud.LastName, stud.Age, stud.Salary, stud.IdDepart, stud.IdGetDep));
+                    students.Add(new Student(stud.Name, stud.LastName, stud.Age, stud.Salary, stud.IdDepart));
                 }
-                foreach (var dep in item.Departaments)
+                foreach (var dep in company.Departaments)
                 {
-                    Departaments.Add(new Departament(dep.NameDepartament, dep.Quantity, dep.ID, dep.IdGetDep));// запись департаментов
+                    departaments.Add(new Departament(dep.NameDepartament, dep.Quantity, dep.ID));// запись департаментов
                 }
-                    companyNew.Add(new Company(item.NameCompany, Departaments, Workers, Students));// запись компании
-                } //вывод информации с файла
-            Console.WriteLine();
-            Console.WriteLine("измененная компания");
-            Console.WriteLine();
-            //вывод новой компании
-            foreach (var neu in companyNew)// вывод компании
-              {
-                Console.WriteLine(neu.ToString());
-                 foreach (var dep in neu.Departaments)
+                Company companyNew = new Company(company.NameCompany, departaments, workers, students);// запись компании
+                                                                                                       //вывод информации с файла
+                                                                                                       //вывод новой компании
+                Console.WriteLine(companyNew.NameCompany);
+                foreach (var dep in companyNew.Departaments)
                  {
                     Console.WriteLine(dep.ToString());
-                    foreach (var wor in neu.Workers)
+                    foreach (var wor in companyNew.Workers)
                     {
                         if(dep.ID == wor.IdDepart)
                         Console.WriteLine(wor.ToString());
                     }
-                    foreach (var stud in neu.Students)
+                    foreach (var stud in companyNew.Students)
                     {
                         if (dep.ID == stud.IdDepart)
                             Console.WriteLine(stud.ToString());
                     }
                  }
-              } // вывод новой компании 
             }
         /// <summary>
         /// происходит десериализация файла
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static List<Company> DeserializeXml(string path)// десериализации Xml
+        public  Company DeserializeXml(string path)// десериализации Xml
         {
 
-            List<Company> сompany = new List<Company>();
+            Company сompany = new Company();
 
             // создания сериализации для листа
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Company>));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Company));
 
               Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read);// создания потока
 
-            сompany = xmlSerializer.Deserialize(stream) as List<Company>;//десериализация
+            сompany = xmlSerializer.Deserialize(stream) as Company;//десериализация
 
             stream.Close();// закрытие потока
 
